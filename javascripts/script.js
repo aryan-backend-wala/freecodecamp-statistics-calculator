@@ -1,12 +1,16 @@
 const calculate = () => {
   const numbers = document.querySelector('#numbers').value.split(/,\s*/g);
   const filtered = numbers.map(num => Number(num)).filter(num => !isNaN(num));
-  document.querySelector('#mean').textContent = getMean(filtered);
-  document.querySelector('#median').textContent = getMedian(filtered);
-  document.querySelector('#mode').textContent = getMode(filtered);
-  document.querySelector('#range').textContent = getRange(filtered);
-  document.querySelector('#variance').textContent = getVariance(filtered);
-  document.querySelector('#standardDeviation').textContent = getStandardDeviation(filtered);
+  setElementTextContent('mean', getMean(filtered));
+  setElementTextContent('median', getMedian(filtered));
+  setElementTextContent('mode', getMode(filtered));
+  setElementTextContent('range', getRange(filtered));
+  setElementTextContent('variance', getVariance(filtered));
+  setElementTextContent('standardDeviation', getStandardDeviation(filtered));
+}
+
+function setElementTextContent(id, value){
+  document.querySelector(`#${id}`).textContent = value;
 }
 
 function getMean(array){
